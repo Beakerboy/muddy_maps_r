@@ -11,4 +11,9 @@ df <- data.frame(
   margin = (yes-no)/(yes+no)
 )
 
-plot_usmap(include = c("KY"), data = df, values = "margin")
+plot_usmap(include = c("KY"), data = df, values="margin") + geom_tile(aes(fill = margin, alpha = population, x=0, y=0)) +
+  scale_fill_gradient2(
+    low = "#ff0000",
+    mid = "#666666",
+    high = "#0000FF"
+  ) + theme_minimal()
