@@ -1,4 +1,5 @@
 library(ggplot2)
+library(usmap)
 
 fips <-10500:10619
 fips = fips * 2 + 1
