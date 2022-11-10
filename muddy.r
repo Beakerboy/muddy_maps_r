@@ -8,7 +8,8 @@ no = c(1873, 2068, 4152, 1028, 5922, 1929, 2094, 21581, 3832, 6638, 5242, 1273, 
 
 df <- data.frame(
   fips = fips,
-  margin = (yes-no)/(yes+no)
+  margin = (yes-no)/(yes+no),
+  population = log(yes+no)
 )
 
 plot_usmap(include = c("KY"), data = df, values="margin") + geom_tile(aes(fill = margin, alpha = population, x=0, y=0)) +
