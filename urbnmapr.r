@@ -1,6 +1,4 @@
 library(tidyverse)  # for data manipulation
-install.packages("devtools")
-devtools::install_github("UrbanInstitute/urbnmapr")
 library(urbnmapr)   # for plotting map
 
 
