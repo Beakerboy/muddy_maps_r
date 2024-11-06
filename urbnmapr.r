@@ -8,8 +8,8 @@ no = c(1873, 2068, 4152, 1028, 5922, 1929, 2094, 21581, 3832, 6638, 5242, 1273, 
 
 df <- data.frame(
   FIPS = fips,
-  votes_dem_2016 = no,
-  votes_gop_2016 = yes
+  votes_dem = no,
+  votes_gop = yes
 )
 
 county_votes <- as_tibble(df)
@@ -70,18 +70,18 @@ hsl_to_rgb <- function(h, s, l) {
 
 county <- county_votes %>% 
   rowwise() %>% 
-  mutate(dem_pct = votes_dem_2016/(votes_dem_2016 + votes_gop_2016),
-         rep_pct = votes_gop_2016/(votes_dem_2016 + votes_gop_2016),
-         party = if_else(votes_dem_2016 > votes_gop_2016, "democrat", "republican"),
+  mutate(dem_pct = votes_dem/(votes_dem + votes_gop),
+         rep_pct = votes_gop/(votes_dem + votes_gop),
+         party = if_else(votes_dem > votes_gop, "democrat", "republican"),
          
          # hue = party
          hue = hue(party),
          
          # saturation = party vote margin
-         sat = saturation(votes_dem_2016, votes_gop_2016),
+         sat = saturation(votes_dem, votes_gop),
          
          # lightness = vote counts
-         light = lightness(sum(votes_dem_2016, votes_gop_2016)),
+         light = lightness(sum(votes_dem, votes_gop)),
          
          # map color
          county_color = hsl_to_rgb(hue, sat, light),
