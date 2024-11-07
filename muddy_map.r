@@ -30,6 +30,17 @@ lightness <- function(total_votes){
   (
     ( (( 1 - ((tot_votes)/UPPERFENCE) ) * 100 ) / 2 ) + 50
   ) * .01
+}
+
+# calculates lightness based on votes per area
+lightness_area <- function(total_votes, area){
+  # if county vote total >= upper fence then 50% lightness. 
+  # lower vote total = higher lightness
+  UPPERFENCE = 150  # statistical upperfence
+  tot_votes = if_else(total_votes / area >= UPPERFENCE, UPPERFENCE, total_votes / area)
+  (
+    ( (( 1 - ((tot_votes / area)/UPPERFENCE) ) * 100 ) / 2 ) + 50
+  ) * .01
   
 }
 
@@ -76,7 +87,7 @@ county <- county_votes %>%
          sat = saturation(votes_dem, votes_gop),
          
          # lightness = vote counts
-         light = lightness(sum(votes_dem, votes_gop)),
+         light = lightness_area(sum(votes_dem, votes_gop), area),
          
          # map color
          county_color = hsl_to_rgb(hue, sat, light),
