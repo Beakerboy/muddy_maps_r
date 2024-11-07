@@ -37,7 +37,7 @@ lightness <- function(total_votes){
 lightness_area <- function(total_votes, area){
   # if county vote total >= upper fence then 50% lightness. 
   # lower vote total = higher lightness
-  UPPERFENCE = 20  # statistical upperfence, what is the best method to set this value? I'm using using 2 * median.
+  UPPERFENCE = 100  # statistical upperfence, what is the best method to set this value?
   tot_votes = if_else(total_votes / area >= UPPERFENCE, UPPERFENCE, total_votes / area)
   (
     ( (( 1 - ((tot_votes)/UPPERFENCE) ) * 100 ) / 2 ) + 50
