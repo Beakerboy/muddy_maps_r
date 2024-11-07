@@ -4,7 +4,8 @@ library(urbnmapr)   # for plotting map
 df <- data.frame(
   FIPS = fips,
   votes_dem = no,
-  votes_gop = yes
+  votes_gop = yes,
+  area = areas
 )
 
 county_votes <- as_tibble(df)
