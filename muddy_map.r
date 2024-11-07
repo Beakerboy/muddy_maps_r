@@ -40,9 +40,8 @@ lightness_area <- function(total_votes, area){
   UPPERFENCE = 150  # statistical upperfence
   tot_votes = if_else(total_votes / area >= UPPERFENCE, UPPERFENCE, total_votes / area)
   (
-    ( (( 1 - ((tot_votes / area)/UPPERFENCE) ) * 100 ) / 2 ) + 50
+    ( (( 1 - ((tot_votes)/UPPERFENCE) ) * 100 ) / 2 ) + 50
   ) * .01
-  
 }
 
 ###### Color Conversions
