@@ -5,3 +5,6 @@ The muddy_map.r script requires 4 arrays of data as input:
  * areas is a list of the area in km² for each county
 
 See 2016_data.r for an example.
+
+The result will be a muddy map for the given region:
+![2024](https://github.com/user-attachments/assets/2636c83e-d234-4a83-a1b2-45e854d403f6)
